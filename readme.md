@@ -138,7 +138,7 @@ Before you begin, make sure you have the following installed:
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/mlops_airflow_mlflow_pipeline.git
+git clone https://github.com/ahcreative/mlops_airflow_mlflow_pipeline.git
 cd mlops_airflow_mlflow_pipeline
 ```
 
@@ -148,7 +148,7 @@ cd mlops_airflow_mlflow_pipeline
 docker network create airflow-mlflow
 ```
 
-### 3️⃣ Create Required Directories
+### 3️⃣ Create Required Directories ( If not created )
 
 ```bash
 # Windows (PowerShell)
@@ -173,11 +173,6 @@ Create a `.env` file in the root directory:
 ```env
 AIRFLOW_UID=50000
 AIRFLOW_IMAGE_NAME=apache/airflow:3.1.8
-AIRFLOW_PROJ_DIR=.
-_AIRFLOW_WWW_USER_USERNAME=airflow
-_AIRFLOW_WWW_USER_PASSWORD=airflow
-AIRFLOW__API_AUTH__JWT_SECRET=airflow_jwt_secret
-AIRFLOW__API_AUTH__JWT_ISSUER=airflow
 ```
 
 ### 6️⃣ Launch the Stack
@@ -332,21 +327,6 @@ default_args = {
     "retry_delay": timedelta(seconds=5),
 }
 ```
-
-### Demonstrating Retry (Task 3)
-
-To force a retry for demonstration purposes, temporarily lower the validation threshold in `data_validation`:
-
-```python
-# Change this temporarily
-if age_missing_pct > 0.10:  # Forces failure on Titanic dataset (~20% missing)
-    raise ValueError("Age missing exceeds threshold — retrying...")
-```
-
-Trigger the DAG — `data_validation` will fail twice then succeed (or exhaust retries).
-**Revert back to `0.30` after capturing the screenshot.**
-
----
 
 ## 📈 Experiment Comparison
 
