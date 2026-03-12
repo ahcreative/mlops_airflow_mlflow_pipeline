@@ -148,14 +148,12 @@ cd mlops_airflow_mlflow_pipeline
 docker network create airflow-mlflow
 ```
 
-### 3️⃣ Create Required Directories ( If not created )
+### 3️⃣ Create Required Directories
 
 ```bash
 # Windows (PowerShell)
-New-Item -ItemType Directory -Force -Path "mlflow\mlruns", "data", "logs", "dags", "plugins", "config"
+New-Item -ItemType Directory -Force -Path "logs", "models", "plugins"
 
-# Linux / Mac
-mkdir -p mlflow/mlruns data logs dags plugins config
 ```
 
 ### 4️⃣ Add the Dataset
